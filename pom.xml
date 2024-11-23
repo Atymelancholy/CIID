@@ -10,11 +10,15 @@
     <modules>
         <!-- Укажите путь к проекту -->
         <module>Контейнеры_очереди_стеки/1</module>
+        <module>Контейнеры_очереди_стеки/2</module>
+        <module>Контейнеры_очереди_стеки/3</module>
+        <module>Контейнеры_очереди_стеки/4</module>
+        <module>Применение_сортировок/1</module>
         <!-- Добавьте другие модули, если нужно -->
     </modules>
     <properties>
     <maven.compiler.source>17</maven.compiler.source>      <maven.compiler.target>17</maven.compiler.target>
-    <sonar.organization>ilyamzr</sonar.organization>
+    <sonar.organization>atymelancholy</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 </project>
