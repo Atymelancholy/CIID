@@ -9,6 +9,8 @@
 #include "endwindownotbad.h"
 #include "endwindowgood.h"
 #include "endwindow.h"
+#include "SituationalAnxietyTest.h"
+#include "PersonalAnxietyTest.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class mainwindow; }
@@ -18,10 +20,6 @@ class mainwindow : public QWidget {
 Q_OBJECT
 
 public:
-    void onLoginSelected();       // Обработчик для выбора входа
-    void onRegistrationSelected(); // Обработчик для выбора регистрации
-    void openEnterWindow();       // Открытие окна ввода
-    void onUserSubmit();          // Обработчик подтверждения
 
     explicit mainwindow(QWidget *parent = nullptr);
 
@@ -34,7 +32,10 @@ public:
     void endWindowNotBad();
     void loadQuestions(const std::string& filePath, std::vector<std::string>& questions);
     void showNextQuestion(Ui::test* testUI);
-    void handleTesting();
+    void handleTesting(int answer);
+    void addAnswer(int answer);
+    void showTestResult(const QString& title, int result, const std::vector<int>& answers)
+;
 
     ~mainwindow() override;
 
@@ -52,6 +53,9 @@ private:
     std::vector<std::string> situationalQuestions;  // Загруженные вопросы
     std::vector<std::string> personalQuestions;    // Другие вопросы (если нужно)
     std::vector<int> answers;                     // Ответы пользователя
+    SituationalAnxietyTest* anxietyTest = nullptr;
+    PersonalAnxietyTest *personalAnxietyTest = nullptr;
+    bool isSituationalTestRunning = true;
 
 };
 

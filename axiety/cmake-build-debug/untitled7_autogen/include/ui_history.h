@@ -26,6 +26,11 @@ public:
     QLabel *background_4;
     QPushButton *enterButton_2;
     QLabel *background_5;
+    QLabel *background_6;
+    QLabel *background_8;
+    QLabel *background_9;
+    QLabel *background_10;
+    QLabel *background_11;
 
     void setupUi(QWidget *history)
     {
@@ -49,7 +54,7 @@ public:
         background->setOpenExternalLinks(false);
         introText_2 = new QLabel(history);
         introText_2->setObjectName("introText_2");
-        introText_2->setGeometry(QRect(60, -40, 691, 181));
+        introText_2->setGeometry(QRect(70, -30, 691, 181));
         QFont font;
         font.setFamilies({QString::fromUtf8("MS Serif")});
         font.setPointSize(32);
@@ -72,7 +77,7 @@ public:
 "}"));
         background_3->setFrameShape(QFrame::Shape::NoFrame);
         background_3->setFrameShadow(QFrame::Shadow::Plain);
-        background_3->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.jpg")));
+        background_3->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.png")));
         background_3->setScaledContents(true);
         background_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         background_3->setWordWrap(false);
@@ -89,7 +94,7 @@ public:
 "}"));
         background_4->setFrameShape(QFrame::Shape::NoFrame);
         background_4->setFrameShadow(QFrame::Shadow::Plain);
-        background_4->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.jpg")));
+        background_4->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.png")));
         background_4->setScaledContents(true);
         background_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         background_4->setWordWrap(false);
@@ -117,7 +122,7 @@ public:
         background_5 = new QLabel(history);
         background_5->setObjectName("background_5");
         background_5->setEnabled(true);
-        background_5->setGeometry(QRect(690, 60, 111, 111));
+        background_5->setGeometry(QRect(10, 460, 151, 141));
         background_5->setStyleSheet(QString::fromUtf8("Qlabel {\n"
 "    border: none;\n"
 "    background: none;\n"
@@ -126,17 +131,107 @@ public:
 "}"));
         background_5->setFrameShape(QFrame::Shape::NoFrame);
         background_5->setFrameShadow(QFrame::Shadow::Plain);
-        background_5->setPixmap(QPixmap(QString::fromUtf8("../resources/Period of time.png")));
+        background_5->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
         background_5->setScaledContents(true);
         background_5->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         background_5->setWordWrap(false);
         background_5->setOpenExternalLinks(false);
+        background_6 = new QLabel(history);
+        background_6->setObjectName("background_6");
+        background_6->setEnabled(true);
+        background_6->setGeometry(QRect(580, 470, 151, 141));
+        background_6->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_6->setFrameShape(QFrame::Shape::NoFrame);
+        background_6->setFrameShadow(QFrame::Shadow::Plain);
+        background_6->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
+        background_6->setScaledContents(true);
+        background_6->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_6->setWordWrap(false);
+        background_6->setOpenExternalLinks(false);
+        background_8 = new QLabel(history);
+        background_8->setObjectName("background_8");
+        background_8->setEnabled(true);
+        background_8->setGeometry(QRect(210, 510, 101, 91));
+        background_8->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_8->setFrameShape(QFrame::Shape::NoFrame);
+        background_8->setFrameShadow(QFrame::Shadow::Plain);
+        background_8->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
+        background_8->setScaledContents(true);
+        background_8->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_8->setWordWrap(false);
+        background_8->setOpenExternalLinks(false);
+        background_9 = new QLabel(history);
+        background_9->setObjectName("background_9");
+        background_9->setEnabled(true);
+        background_9->setGeometry(QRect(490, 500, 111, 101));
+        background_9->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_9->setFrameShape(QFrame::Shape::NoFrame);
+        background_9->setFrameShadow(QFrame::Shadow::Plain);
+        background_9->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
+        background_9->setScaledContents(true);
+        background_9->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_9->setWordWrap(false);
+        background_9->setOpenExternalLinks(false);
+        background_10 = new QLabel(history);
+        background_10->setObjectName("background_10");
+        background_10->setEnabled(true);
+        background_10->setGeometry(QRect(720, 520, 91, 81));
+        background_10->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_10->setFrameShape(QFrame::Shape::NoFrame);
+        background_10->setFrameShadow(QFrame::Shadow::Plain);
+        background_10->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
+        background_10->setScaledContents(true);
+        background_10->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_10->setWordWrap(false);
+        background_10->setOpenExternalLinks(false);
+        background_11 = new QLabel(history);
+        background_11->setObjectName("background_11");
+        background_11->setEnabled(true);
+        background_11->setGeometry(QRect(130, 540, 71, 61));
+        background_11->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_11->setFrameShape(QFrame::Shape::NoFrame);
+        background_11->setFrameShadow(QFrame::Shadow::Plain);
+        background_11->setPixmap(QPixmap(QString::fromUtf8("../resources/flower.png")));
+        background_11->setScaledContents(true);
+        background_11->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_11->setWordWrap(false);
+        background_11->setOpenExternalLinks(false);
         background->raise();
         background_3->raise();
         introText_2->raise();
         background_4->raise();
         enterButton_2->raise();
         background_5->raise();
+        background_6->raise();
+        background_8->raise();
+        background_9->raise();
+        background_10->raise();
+        background_11->raise();
 
         retranslateUi(history);
 
@@ -152,6 +247,11 @@ public:
         background_4->setText(QString());
         enterButton_2->setText(QCoreApplication::translate("history", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         background_5->setText(QString());
+        background_6->setText(QString());
+        background_8->setText(QString());
+        background_9->setText(QString());
+        background_10->setText(QString());
+        background_11->setText(QString());
     } // retranslateUi
 
 };

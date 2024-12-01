@@ -15,6 +15,8 @@
 #include "../header/endwindowgood.h"
 #include "../header/endwindownotbad.h"
 #include "../header/globalFuncs.h"
+#include <QMessageBox>
+
 
 mainwindow::mainwindow(QWidget *parent) :
         QWidget(parent), ui(new Ui::mainwindow), enterWindow(nullptr), userInterfaceWindow(nullptr), test(nullptr), history(
@@ -101,7 +103,25 @@ void mainwindow::userInterfaceWindowShow(const std::string& login) {
     }
     userInterfaceWindow->show();
 }
+void mainwindow::loadQuestions(const std::string& filePath, std::vector<std::string>& questions) {
+    questions.clear();
+    std::ifstream file(filePath);
+    if (!file) {
+        qDebug() << "Error: Failed to open file for loading questions: " << QString::fromStdString(filePath);
+        return;
+    }
+    std::string line;
+    while (std::getline(file, line)) {
+        if (!line.empty()) {
+            questions.push_back(line);
+        }
+    }
+    file.close();
+    qDebug() << "Loaded questions from:" << QString::fromStdString(filePath) << "Total:" << questions.size();
+    currentQuestionIndex = 0; // Сброс индекса
+}
 
+/*
 void mainwindow::loadQuestions(const std::string& filePath, std::vector<std::string>& questions) {
     questions.clear();
     std::ifstream file(filePath);
@@ -116,41 +136,81 @@ void mainwindow::loadQuestions(const std::string& filePath, std::vector<std::str
         }
     }
     file.close();
-    currentQuestionIndex = 0; // Сбрасываем индекс для нового теста
-}
+    currentQuestionIndex = 0;
+}*/
 
-// Показываем следующий вопрос
 void mainwindow::showNextQuestion(Ui::test* testUI) {
     if (currentQuestionIndex < situationalQuestions.size()) {
-        // Устанавливаем текст текущего вопроса
         testUI->label->setText(QString::fromStdString(situationalQuestions[currentQuestionIndex]));
     } else {
-        // Завершение теста
         //QMessageBox::information(this, "Тест завершён", "Вы ответили на все вопросы.");
         test->close();
     }
 }
 
-// Обработка логики теста
-void mainwindow::handleTesting() {
-    auto *testUI = static_cast<Ui::test *>(test->property("ui").value<void *>());
-
-    // Считываем ответ пользователя (например, через радиокнопки)
-    if (testUI->enterButton->isChecked()) {
-        answers.push_back(1); // Пример: ответ "да"
-    } else if (testUI->enterButton_2->isChecked()) {
-        answers.push_back(0); // Пример: ответ "нет"
-    } else {
-       // QMessageBox::warning(this, "Предупреждение", "Выберите ответ перед переходом к следующему вопросу.");
-        return;
+void mainwindow::showTestResult(const QString& title, int result, const std::vector<int>& answers) {
+    QString answersStr = "Ответы на вопросы:\n";
+    for (int i = 0; i < answers.size(); ++i) {
+        answersStr += QString("Вопрос %1: Ответ %2\n").arg(i + 1).arg(answers[i]);
     }
 
-    // Переходим к следующему вопросу
-    currentQuestionIndex++;
-    showNextQuestion(testUI);
+    QMessageBox messageBox(this);
+    messageBox.setWindowTitle(title);
+    messageBox.setText(QString("%1\n\nРезультат теста: %2").arg(answersStr).arg(result));
+
+    messageBox.setStyleSheet(
+            "QMessageBox { background-color: rgb(255, 174, 205); }"
+            "QLabel { color: black; font-size: 14px; }"
+            "QPushButton { background-color: rgb(123, 156, 100); color: white; padding: 5px 10px; "
+            "border-radius: 5px; }"
+            "QPushButton:hover { background-color: rgb(101, 127, 80); }"
+    );
+
+    messageBox.exec();
 }
 
-// Окно теста
+
+/*
+void SituationalAnxietyTest::addAnswer(int answer) {
+    answers.push_back(answer);
+}*/
+
+
+void mainwindow::handleTesting(int answer) {
+    auto *testUI = static_cast<Ui::test *>(test->property("ui").value<void *>());
+
+    if (isSituationalTestRunning && anxietyTest) {
+        anxietyTest->addAnswer(answer);
+    } else if (!isSituationalTestRunning && personalAnxietyTest) {
+        personalAnxietyTest->addAnswer(answer);
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < situationalQuestions.size()) {
+        showNextQuestion(testUI);
+    } else if (isSituationalTestRunning) {
+        int result = anxietyTest->calculateResult();
+        showTestResult("Результат ситуационного теста", result, anxietyTest->getAnswers());
+
+        isSituationalTestRunning = false;
+        loadQuestions("personal_questions.txt", situationalQuestions);
+        if (!situationalQuestions.empty()) {
+            personalAnxietyTest = new PersonalAnxietyTest(situationalQuestions.size(), situationalQuestions);
+            currentQuestionIndex = 0;
+            showNextQuestion(testUI);
+        } else {
+            QMessageBox::critical(this, "Ошибка", "Не удалось загрузить вопросы для личностного теста.");
+            test->close();
+        }
+    } else {
+        int result = personalAnxietyTest->calculateResult();
+        showTestResult("Результат личностного теста", result, personalAnxietyTest->getAnswers());
+        test->close();
+    }
+}
+
+
 void mainwindow::testWindow() {
     userInterfaceWindow->hide();
 
@@ -160,36 +220,31 @@ void mainwindow::testWindow() {
         testUI->setupUi(test);
         test->setProperty("ui", QVariant::fromValue(static_cast<void *>(testUI)));
 
-        // Загрузка вопросов
-        loadQuestions("situational_questions.txt", situationalQuestions); // Укажите нужный файл
+        loadQuestions("situational_questions.txt", situationalQuestions);
 
-        // Инициализация первого вопроса
         if (!situationalQuestions.empty()) {
+            anxietyTest = new SituationalAnxietyTest(situationalQuestions.size(), situationalQuestions);
             showNextQuestion(testUI);
+        } else {
+            QMessageBox::critical(this, "Ошибка", "Не удалось загрузить вопросы для ситуационного теста.");
+            return;
         }
 
-        // Подключение кнопки "Ответить"
         connect(testUI->enterButton, &QPushButton::clicked, this, [this, testUI]() {
-            handleTesting();
+            handleTesting(1);
+        });
+        connect(testUI->enterButton_2, &QPushButton::clicked, this, [this, testUI]() {
+            handleTesting(2);
+        });
+        connect(testUI->enterButton_3, &QPushButton::clicked, this, [this, testUI]() {
+            handleTesting(3);
+        });
+        connect(testUI->enterButton_4, &QPushButton::clicked, this, [this, testUI]() {
+            handleTesting(4);
         });
     }
     test->show();
 }
-/*
-void mainwindow:: testWindow(){
-        userInterfaceWindow->hide();
-        std::string log;
-        if (!test) {
-            test = new class test(this);
-            auto *testUI = new Ui::test;
-            testUI->setupUi(test);
-            test->setProperty("ui", QVariant::fromValue(static_cast<void *>(testUI)));
-            connect(testUI->enterButton, &QPushButton::clicked, this, [this,testUI]() {
-                handleTesting();
-            });
-        }
-    test->show();
-}*/
 
 void mainwindow:: historyWindow(){
     userInterfaceWindow->hide();

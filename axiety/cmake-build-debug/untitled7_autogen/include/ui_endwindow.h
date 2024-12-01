@@ -31,6 +31,7 @@ public:
     QLabel *introText_4;
     QLabel *background_2;
     QPushButton *enterButton;
+    QLabel *background_3;
 
     void setupUi(QWidget *endwindow)
     {
@@ -50,7 +51,7 @@ public:
 "}"));
         background->setFrameShape(QFrame::Shape::NoFrame);
         background->setFrameShadow(QFrame::Shadow::Plain);
-        background->setPixmap(QPixmap(QString::fromUtf8("../resources/paper-background.png")));
+        background->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.png")));
         background->setScaledContents(true);
         background->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         background->setWordWrap(false);
@@ -158,6 +159,28 @@ public:
 "    cursor: pointer; /* \320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\320\265 \320\272\321\203\321\200\321\201\320\276\321\200\320\260 \320\277\321\200"
                         "\320\270 \320\275\320\260\320\262\320\265\320\264\320\265\320\275\320\270\320\270 */\n"
 "}"));
+        background_3 = new QLabel(endwindow);
+        background_3->setObjectName("background_3");
+        background_3->setEnabled(true);
+        background_3->setGeometry(QRect(20, 20, 751, 561));
+        background_3->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"}"));
+        background_3->setFrameShape(QFrame::Shape::NoFrame);
+        background_3->setFrameShadow(QFrame::Shadow::Plain);
+        background_3->setPixmap(QPixmap(QString::fromUtf8("../resources/paper-background.png")));
+        background_3->setScaledContents(true);
+        background_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_3->setWordWrap(false);
+        background_3->setOpenExternalLinks(false);
+        background->raise();
+        background_3->raise();
+        introText_2->raise();
+        introText_6->raise();
+        layoutWidget->raise();
+        background_2->raise();
+        enterButton->raise();
 
         retranslateUi(endwindow);
 
@@ -175,6 +198,7 @@ public:
         introText_4->setText(QCoreApplication::translate("endwindow", "- \320\236\320\261\321\200\320\260\321\202\320\270\321\202\320\265\321\201\321\214 \320\272 \320\277\321\200\320\276\321\204\320\265\321\201\321\201\320\270\320\276\320\275\320\260\320\273\321\203, \320\265\321\201\320\273\320\270 \321\207\321\203\320\262\321\201\321\202\320\262\321\203\320\265\321\202\320\265, \321\207\321\202\320\276 \321\202\321\200\320\265\320\262\320\276\320\266\320\275\320\276\321\201\321\202\321\214 \320\274\320\265\321\210\320\260\320\265\321\202 \320\262\320\260\320\274.", nullptr));
         background_2->setText(QString());
         enterButton->setText(QCoreApplication::translate("endwindow", "\320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 \320\262 \320\275\320\260\321\207\320\260\320\273\320\276", nullptr));
+        background_3->setText(QString());
     } // retranslateUi
 
 };

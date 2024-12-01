@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>675</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,10 +62,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>781</width>
-     <height>241</height>
+     <x>60</x>
+     <y>110</y>
+     <width>681</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -86,7 +86,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../resources/vintage-wallpaper-background.jpg</pixmap>
+    <pixmap>../resources/vintage-wallpaper-background.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -104,8 +104,8 @@
   <widget class="QPushButton" name="enterButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>400</y>
+     <x>270</x>
+     <y>360</y>
      <width>261</width>
      <height>51</height>
     </rect>
@@ -138,8 +138,8 @@ QPushButton:hover {
   <widget class="QPushButton" name="enterButton_2">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>460</y>
+     <x>270</x>
+     <y>420</y>
      <width>261</width>
      <height>51</height>
     </rect>
@@ -172,8 +172,8 @@ QPushButton:hover {
   <widget class="QPushButton" name="enterButton_3">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>520</y>
+     <x>270</x>
+     <y>480</y>
      <width>261</width>
      <height>51</height>
     </rect>
@@ -206,8 +206,8 @@ QPushButton:hover {
   <widget class="QPushButton" name="enterButton_4">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>580</y>
+     <x>270</x>
+     <y>540</y>
      <width>261</width>
      <height>51</height>
     </rect>
@@ -243,7 +243,7 @@ QPushButton:hover {
    </property>
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>650</x>
      <y>70</y>
      <width>161</width>
      <height>151</height>
@@ -330,10 +330,10 @@ QPushButton:hover {
   <widget class="QLabel" name="introText_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>100</x>
      <y>40</y>
-     <width>731</width>
-     <height>51</height>
+     <width>621</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -351,14 +351,14 @@ QPushButton:hover {
 }</string>
    </property>
    <property name="text">
-    <string>Ответьте на следующий вопрос, выбрав один из предложенных вариантов ответа</string>
+    <string>Ответьте на вопрос, выбрав один из предложенных вариантов ответа</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>190</y>
+     <x>210</x>
+     <y>150</y>
      <width>371</width>
      <height>141</height>
     </rect>
@@ -366,7 +366,7 @@ QPushButton:hover {
    <property name="font">
     <font>
      <family>MS Serif</family>
-     <pointsize>17</pointsize>
+     <pointsize>20</pointsize>
     </font>
    </property>
    <property name="styleSheet">

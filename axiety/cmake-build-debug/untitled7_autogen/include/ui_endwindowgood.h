@@ -25,6 +25,9 @@ public:
     QLabel *background_2;
     QLabel *background_3;
     QPushButton *enterButton;
+    QLabel *background_4;
+    QLabel *background_5;
+    QLabel *background_6;
 
     void setupUi(QWidget *endwindowgood)
     {
@@ -109,11 +112,59 @@ public:
 "    cursor: pointer; /* \320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\320\265 \320\272\321\203\321\200\321\201\320\276\321\200\320\260 \320\277\321\200"
                         "\320\270 \320\275\320\260\320\262\320\265\320\264\320\265\320\275\320\270\320\270 */\n"
 "}"));
+        background_4 = new QLabel(endwindowgood);
+        background_4->setObjectName("background_4");
+        background_4->setEnabled(true);
+        background_4->setGeometry(QRect(10, 180, 101, 101));
+        background_4->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"}"));
+        background_4->setFrameShape(QFrame::Shape::NoFrame);
+        background_4->setFrameShadow(QFrame::Shadow::Plain);
+        background_4->setPixmap(QPixmap(QString::fromUtf8("../resources/heart.png")));
+        background_4->setScaledContents(true);
+        background_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_4->setWordWrap(false);
+        background_4->setOpenExternalLinks(false);
+        background_5 = new QLabel(endwindowgood);
+        background_5->setObjectName("background_5");
+        background_5->setEnabled(true);
+        background_5->setGeometry(QRect(630, 30, 71, 71));
+        background_5->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"}"));
+        background_5->setFrameShape(QFrame::Shape::NoFrame);
+        background_5->setFrameShadow(QFrame::Shadow::Plain);
+        background_5->setPixmap(QPixmap(QString::fromUtf8("../resources/heart.png")));
+        background_5->setScaledContents(true);
+        background_5->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_5->setWordWrap(false);
+        background_5->setOpenExternalLinks(false);
+        background_6 = new QLabel(endwindowgood);
+        background_6->setObjectName("background_6");
+        background_6->setEnabled(true);
+        background_6->setGeometry(QRect(670, 460, 101, 101));
+        background_6->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"}"));
+        background_6->setFrameShape(QFrame::Shape::NoFrame);
+        background_6->setFrameShadow(QFrame::Shadow::Plain);
+        background_6->setPixmap(QPixmap(QString::fromUtf8("../resources/heart.png")));
+        background_6->setScaledContents(true);
+        background_6->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_6->setWordWrap(false);
+        background_6->setOpenExternalLinks(false);
         background->raise();
         background_3->raise();
         introText_2->raise();
         background_2->raise();
         enterButton->raise();
+        background_4->raise();
+        background_5->raise();
+        background_6->raise();
 
         retranslateUi(endwindowgood);
 
@@ -128,6 +179,9 @@ public:
         background_2->setText(QString());
         background_3->setText(QString());
         enterButton->setText(QCoreApplication::translate("endwindowgood", "\320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 \320\262 \320\275\320\260\321\207\320\260\320\273\320\276", nullptr));
+        background_4->setText(QString());
+        background_5->setText(QString());
+        background_6->setText(QString());
     } // retranslateUi
 
 };

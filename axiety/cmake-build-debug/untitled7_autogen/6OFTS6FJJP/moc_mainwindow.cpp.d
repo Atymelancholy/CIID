@@ -380,6 +380,9 @@ C:/Users/atyme/CLionProjects/untitled7/cmake-build-debug/untitled7_autogen/6OFTS
   C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
   C:/Qt/6.7.2/mingw_64/include/QtWidgets/qwidget.h \
+  C:/Users/atyme/CLionProjects/untitled7/header/AnxietyTest.h \
+  C:/Users/atyme/CLionProjects/untitled7/header/PersonalAnxietyTest.h \
+  C:/Users/atyme/CLionProjects/untitled7/header/SituationalAnxietyTest.h \
   C:/Users/atyme/CLionProjects/untitled7/header/UserManager.h \
   C:/Users/atyme/CLionProjects/untitled7/header/endwindow.h \
   C:/Users/atyme/CLionProjects/untitled7/header/endwindowgood.h \

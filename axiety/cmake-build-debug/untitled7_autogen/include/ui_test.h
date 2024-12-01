@@ -35,7 +35,7 @@ public:
     {
         if (test->objectName().isEmpty())
             test->setObjectName("test");
-        test->resize(825, 675);
+        test->resize(800, 600);
         background = new QLabel(test);
         background->setObjectName("background");
         background->setEnabled(true);
@@ -54,7 +54,7 @@ public:
         background_2 = new QLabel(test);
         background_2->setObjectName("background_2");
         background_2->setEnabled(true);
-        background_2->setGeometry(QRect(30, 130, 781, 241));
+        background_2->setGeometry(QRect(60, 110, 681, 231));
         background_2->setStyleSheet(QString::fromUtf8("Qlabel {\n"
 "    border: none;\n"
 "    background: none;\n"
@@ -63,14 +63,14 @@ public:
 "}"));
         background_2->setFrameShape(QFrame::Shape::NoFrame);
         background_2->setFrameShadow(QFrame::Shadow::Plain);
-        background_2->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.jpg")));
+        background_2->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.png")));
         background_2->setScaledContents(true);
         background_2->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         background_2->setWordWrap(false);
         background_2->setOpenExternalLinks(false);
         enterButton = new QPushButton(test);
         enterButton->setObjectName("enterButton");
-        enterButton->setGeometry(QRect(290, 400, 261, 51));
+        enterButton->setGeometry(QRect(270, 360, 261, 51));
         QFont font;
         font.setFamilies({QString::fromUtf8("MS Serif")});
         enterButton->setFont(font);
@@ -90,7 +90,7 @@ public:
 "}"));
         enterButton_2 = new QPushButton(test);
         enterButton_2->setObjectName("enterButton_2");
-        enterButton_2->setGeometry(QRect(290, 460, 261, 51));
+        enterButton_2->setGeometry(QRect(270, 420, 261, 51));
         enterButton_2->setFont(font);
         enterButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(123, 156, 100);\n"
@@ -108,7 +108,7 @@ public:
 "}"));
         enterButton_3 = new QPushButton(test);
         enterButton_3->setObjectName("enterButton_3");
-        enterButton_3->setGeometry(QRect(290, 520, 261, 51));
+        enterButton_3->setGeometry(QRect(270, 480, 261, 51));
         enterButton_3->setFont(font);
         enterButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(123, 156, 100);\n"
@@ -126,7 +126,7 @@ public:
 "}"));
         enterButton_4 = new QPushButton(test);
         enterButton_4->setObjectName("enterButton_4");
-        enterButton_4->setGeometry(QRect(290, 580, 261, 51));
+        enterButton_4->setGeometry(QRect(270, 540, 261, 51));
         enterButton_4->setFont(font);
         enterButton_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color:rgb(123, 156, 100);\n"
@@ -145,7 +145,7 @@ public:
         background_3 = new QLabel(test);
         background_3->setObjectName("background_3");
         background_3->setEnabled(true);
-        background_3->setGeometry(QRect(680, 70, 161, 151));
+        background_3->setGeometry(QRect(650, 70, 161, 151));
         background_3->setStyleSheet(QString::fromUtf8("Qlabel {\n"
 "    border: none;\n"
 "    background: none;\n"
@@ -178,7 +178,7 @@ public:
         background_4->setOpenExternalLinks(false);
         introText_2 = new QLabel(test);
         introText_2->setObjectName("introText_2");
-        introText_2->setGeometry(QRect(50, 40, 731, 51));
+        introText_2->setGeometry(QRect(100, 40, 621, 71));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("MS Serif")});
         font1.setPointSize(17);
@@ -191,10 +191,10 @@ public:
 "}"));
         label = new QLabel(test);
         label->setObjectName("label");
-        label->setGeometry(QRect(230, 190, 371, 141));
+        label->setGeometry(QRect(210, 150, 371, 141));
         QFont font2;
         font2.setFamilies({QString::fromUtf8("MS Serif")});
-        font2.setPointSize(17);
+        font2.setPointSize(20);
         label->setFont(font2);
         label->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "    border: none;\n"
@@ -219,7 +219,7 @@ public:
         enterButton_4->setText(QCoreApplication::translate("test", "\321\201\320\276\320\262\320\265\321\200\321\210\320\265\320\275\320\275\320\276 \320\262\320\265\321\200\320\275\320\276", nullptr));
         background_3->setText(QString());
         background_4->setText(QString());
-        introText_2->setText(QCoreApplication::translate("test", "\320\236\321\202\320\262\320\265\321\202\321\214\321\202\320\265 \320\275\320\260 \321\201\320\273\320\265\320\264\321\203\321\216\321\211\320\270\320\271 \320\262\320\276\320\277\321\200\320\276\321\201, \320\262\321\213\320\261\321\200\320\260\320\262 \320\276\320\264\320\270\320\275 \320\270\320\267 \320\277\321\200\320\265\320\264\320\273\320\276\320\266\320\265\320\275\320\275\321\213\321\205 \320\262\320\260\321\200\320\270\320\260\320\275\321\202\320\276\320\262 \320\276\321\202\320\262\320\265\321\202\320\260", nullptr));
+        introText_2->setText(QCoreApplication::translate("test", "\320\236\321\202\320\262\320\265\321\202\321\214\321\202\320\265 \320\275\320\260 \320\262\320\276\320\277\321\200\320\276\321\201, \320\262\321\213\320\261\321\200\320\260\320\262 \320\276\320\264\320\270\320\275 \320\270\320\267 \320\277\321\200\320\265\320\264\320\273\320\276\320\266\320\265\320\275\320\275\321\213\321\205 \320\262\320\260\321\200\320\270\320\260\320\275\321\202\320\276\320\262 \320\276\321\202\320\262\320\265\321\202\320\260", nullptr));
         label->setText(QCoreApplication::translate("test", "TextLabel", nullptr));
     } // retranslateUi
 

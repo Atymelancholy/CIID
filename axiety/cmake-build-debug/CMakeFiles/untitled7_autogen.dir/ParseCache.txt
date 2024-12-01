@@ -1864,6 +1864,9 @@ C:/Users/atyme/CLionProjects/untitled7/header/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qwidget.h
+ mdp:C:/Users/atyme/CLionProjects/untitled7/header/AnxietyTest.h
+ mdp:C:/Users/atyme/CLionProjects/untitled7/header/PersonalAnxietyTest.h
+ mdp:C:/Users/atyme/CLionProjects/untitled7/header/SituationalAnxietyTest.h
  mdp:C:/Users/atyme/CLionProjects/untitled7/header/UserManager.h
  mdp:C:/Users/atyme/CLionProjects/untitled7/header/endwindow.h
  mdp:C:/Users/atyme/CLionProjects/untitled7/header/endwindowgood.h

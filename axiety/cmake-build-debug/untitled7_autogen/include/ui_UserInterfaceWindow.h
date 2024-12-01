@@ -24,6 +24,8 @@ public:
     QLabel *introText_2;
     QPushButton *enterButton;
     QPushButton *enterButton_2;
+    QLabel *background_5;
+    QLabel *background_6;
 
     void setupUi(QWidget *UserInterfaceWindow)
     {
@@ -60,7 +62,7 @@ public:
 "}"));
         enterButton = new QPushButton(UserInterfaceWindow);
         enterButton->setObjectName("enterButton");
-        enterButton->setGeometry(QRect(280, 300, 231, 51));
+        enterButton->setGeometry(QRect(280, 420, 231, 51));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("MS Serif")});
         enterButton->setFont(font1);
@@ -80,7 +82,7 @@ public:
 "}"));
         enterButton_2 = new QPushButton(UserInterfaceWindow);
         enterButton_2->setObjectName("enterButton_2");
-        enterButton_2->setGeometry(QRect(280, 390, 231, 51));
+        enterButton_2->setGeometry(QRect(280, 490, 231, 51));
         enterButton_2->setFont(font1);
         enterButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(123, 156, 100);\n"
@@ -96,6 +98,46 @@ public:
 "    cursor: pointer; /* \320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\320\265 \320\272\321\203\321\200\321\201\320\276\321\200\320\260 \320\277\321\200"
                         "\320\270 \320\275\320\260\320\262\320\265\320\264\320\265\320\275\320\270\320\270 */\n"
 "}"));
+        background_5 = new QLabel(UserInterfaceWindow);
+        background_5->setObjectName("background_5");
+        background_5->setEnabled(true);
+        background_5->setGeometry(QRect(250, 150, 261, 231));
+        background_5->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_5->setFrameShape(QFrame::Shape::NoFrame);
+        background_5->setFrameShadow(QFrame::Shadow::Plain);
+        background_5->setPixmap(QPixmap(QString::fromUtf8("../resources/flower-pot.png")));
+        background_5->setScaledContents(true);
+        background_5->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_5->setWordWrap(false);
+        background_5->setOpenExternalLinks(false);
+        background_6 = new QLabel(UserInterfaceWindow);
+        background_6->setObjectName("background_6");
+        background_6->setEnabled(true);
+        background_6->setGeometry(QRect(90, 30, 611, 541));
+        background_6->setStyleSheet(QString::fromUtf8("Qlabel {\n"
+"    border: none;\n"
+"    background: none;\n"
+"    border-radius: 15px; \n"
+"    background-color: transparent\n"
+"}"));
+        background_6->setFrameShape(QFrame::Shape::NoFrame);
+        background_6->setFrameShadow(QFrame::Shadow::Plain);
+        background_6->setPixmap(QPixmap(QString::fromUtf8("../resources/vintage-wallpaper-background.png")));
+        background_6->setScaledContents(true);
+        background_6->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        background_6->setWordWrap(false);
+        background_6->setOpenExternalLinks(false);
+        background->raise();
+        background_6->raise();
+        introText_2->raise();
+        enterButton->raise();
+        enterButton_2->raise();
+        background_5->raise();
 
         retranslateUi(UserInterfaceWindow);
 
@@ -109,6 +151,8 @@ public:
         introText_2->setText(QCoreApplication::translate("UserInterfaceWindow", "\320\222\321\213\320\261\320\265\321\200\320\265\321\202\320\265 \320\276\320\264\320\275\321\203 \320\270\320\267 \320\276\320\277\321\206\320\270\320\271", nullptr));
         enterButton->setText(QCoreApplication::translate("UserInterfaceWindow", "\320\237\321\200\320\276\320\271\321\202\320\270 \321\202\320\265\321\201\321\202", nullptr));
         enterButton_2->setText(QCoreApplication::translate("UserInterfaceWindow", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217", nullptr));
+        background_5->setText(QString());
+        background_6->setText(QString());
     } // retranslateUi
 
 };
