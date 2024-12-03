@@ -1,45 +1,19 @@
 package org.example;
-import java.util.logging.Logger;
-import java.util.Scanner;
 
 public class Main {
-    static Logger logger = Logger.getLogger(Main.class.getName());
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ListNode head = getUserInputList(scanner);
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
-        int targetValue = getTargetNodeValue(scanner);
-        processRemoval(head, targetValue);
+        System.out.println("Исходный список:");
+        list.printList();
 
-        scanner.close();
-    }
+        list.removeAfter(2);
 
-    private static ListNode getUserInputList(Scanner scanner) {
-        logger.info("Введите элементы связанного списка через пробел:");
-        String[] input = scanner.nextLine().split(" ");
-        ListNode head = LinkedListUtils.createListFromInput(input);
-
-        logger.info("Ваш связанный список:");
-        LinkedListUtils.printList(head);
-
-        return head;
-    }
-
-    private static int getTargetNodeValue(Scanner scanner) {
-        logger.info("\nВведите значение узла, после которого хотите удалить следующий узел:");
-        return scanner.nextInt();
-    }
-
-    private static void processRemoval(ListNode head, int targetValue) {
-        ListNode targetNode = LinkedListUtils.findNode(head, targetValue);
-        if (targetNode == null) {
-            logger.info("Узел с таким значением не найден.");
-        } else {
-            LinkedListUtils.removeAfter(targetNode);
-
-            logger.info("Обновленный список:");
-            LinkedListUtils.printList(head);
-        }
+        System.out.println("Список после удаления:");
+        list.printList();
     }
 }
