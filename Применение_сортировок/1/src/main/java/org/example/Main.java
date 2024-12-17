@@ -1,36 +1,44 @@
 package org.example;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.Scanner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    static Logger logger = Logger.getLogger(Main.class.getName());
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        List<Version> versions = new ArrayList<>();
+        versions.add(new Version("115.10.1"));
+        versions.add(new Version("115.1.1"));
+        versions.add(new Version("115.10.0"));
+        versions.add(new Version("114.0.5"));
+        versions.add(new Version("115.10.10"));
 
-        logger.info("Введите первую версию (пример, 115.1.1): ");
-        String version1Input = scanner.nextLine();
-
-        logger.info("Введите вторую версию (пример, 115.10.1): ");
-        String version2Input = scanner.nextLine();
-
-        try {
-            Version version1 = new Version(version1Input);
-            Version version2 = new Version(version2Input);
-
-            int comparisonResult = version1.compareTo(version2);
-
-            if (comparisonResult < 0) {
-                logger.log(Level.INFO, "{0} меньше, чем {1}", new Object[]{version1, version2});
-            } else if (comparisonResult > 0) {
-                logger.log(Level.INFO, "{0} больше, чем {1}", new Object[]{version1, version2});
-            } else {
-                logger.log(Level.INFO, "{0} равно {1}", new Object[]{version1, version2});
-            }
-        } catch (IllegalArgumentException e) {
-            logger.log(Level.SEVERE, "Ошибка: {0}", e.getMessage());
+        System.out.println("До сортировки:");
+        for (Version version : versions) {
+            System.out.println(version);
         }
-        scanner.close();
+
+        bubbleSort(versions);
+
+        System.out.println("После сортировки:");
+        for (Version version : versions) {
+            System.out.println(version);
+        }
+    }
+
+    public static void bubbleSort(List<Version> versions) {
+        int n = versions.size();
+        boolean swapped;
+
+        do {
+            swapped = false;
+            for (int i = 0; i < n - 1; i++) {
+                if (versions.get(i).compareTo(versions.get(i + 1)) > 0) {
+                    Version temp = versions.get(i);
+                    versions.set(i, versions.get(i + 1));
+                    versions.set(i + 1, temp);
+                    swapped = true;
+                }
+            }
+        } while (swapped);
     }
 }
