@@ -8,12 +8,12 @@ public class Main {
         list.add(3);
         list.add(4);
 
-        System.out.println("Исходный список:");
-        list.printList();
+        String listString1 = list.toString();
+        System.out.println("Исходный список:" + listString1);
 
         list.removeAfter(2);
 
-        System.out.println("Список после удаления:");
-        list.printList();
+        String listString2 = list.toString();
+        System.out.println("Список после удаления:" + listString2);
     }
 }

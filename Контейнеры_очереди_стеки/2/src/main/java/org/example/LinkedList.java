@@ -58,15 +58,17 @@ public class LinkedList {
         return null;
     }
 
-    public void printList() {
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
         Node current = head;
         while (current != null) {
-            System.out.print(current.getData());
+            result.append(current.getData());
             if (current.getNext() != null) {
-                System.out.print(" -> ");
+                result.append(" -> ");
             }
             current = current.getNext();
         }
-        System.out.println();
+        return result.toString();
     }
 }
