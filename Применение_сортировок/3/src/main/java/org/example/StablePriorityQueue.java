@@ -2,8 +2,8 @@ package org.example;
 
 import java.util.*;
 
-public class StablePriorityQueue<T> {
-    private static class QueueItem<T> {
+public class StablePriorityQueue<T extends Comparable<T>> {
+    private static class QueueItem<T extends Comparable<T>> implements Comparable<QueueItem<T>> {
         T value;
         int priority;
         int insertionIndex;
@@ -13,6 +13,15 @@ public class StablePriorityQueue<T> {
             this.priority = priority;
             this.insertionIndex = insertionIndex;
         }
+
+        @Override
+        public int compareTo(QueueItem<T> other) {
+            int priorityComparison = Integer.compare(this.priority, other.priority);
+            if (priorityComparison != 0) {
+                return priorityComparison;
+            }
+            return Integer.compare(this.insertionIndex, other.insertionIndex);
+        }
     }
 
     private PriorityQueue<QueueItem<T>> queue;
@@ -20,13 +29,7 @@ public class StablePriorityQueue<T> {
 
     public StablePriorityQueue() {
         this.insertionCounter = 0;
-        queue = new PriorityQueue<>((a, b) -> {
-            if (a.priority != b.priority) {
-                return Integer.compare(a.priority, b.priority);
-            } else {
-                return Integer.compare(a.insertionIndex, b.insertionIndex);
-            }
-        });
+        queue = new PriorityQueue<>();
     }
 
     public void add(T value, int priority) {
