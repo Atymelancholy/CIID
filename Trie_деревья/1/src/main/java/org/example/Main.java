@@ -70,11 +70,15 @@ public class Main {
     private static HashSet<String> findUniqueSubstrings(String text, int L) {
         Trie trie = new Trie();
         HashSet<String> uniqueSubstrings = new HashSet<>();
-        for (int i = 0; i <= text.length() - L; i++) {
-            String substring = text.substring(i, i + L);
-            if (!trie.contains(substring)) {
-                trie.insert(substring);
-                uniqueSubstrings.add(substring);
+        String[] words = text.split(" ");
+        for (String word : words) {
+            if (word.length() < L) continue;
+            for (int i = 0; i <= word.length() - L; i++) {
+                String substring = word.substring(i, i + L);
+                if (!trie.contains(substring)) {
+                    trie.insert(substring);
+                    uniqueSubstrings.add(substring);
+                }
             }
         }
         return uniqueSubstrings;
