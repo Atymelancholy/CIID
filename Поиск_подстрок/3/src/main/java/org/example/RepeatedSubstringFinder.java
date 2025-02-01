@@ -8,7 +8,7 @@ public class RepeatedSubstringFinder {
         int posCount = 0;
 
         for (int i = 0; i <= n - m; i++) {
-            if (s.substring(i, i + m).equals(b)) {
+            if (s.startsWith(b, i)) {
                 positions[posCount++] = i;
             }
         }
