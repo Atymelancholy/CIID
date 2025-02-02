@@ -1,46 +1,42 @@
 package org.example;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class Main {
     public static void main(String[] args) {
-        String binaryStr1 = "110";
-        String binaryStr2 = "1010";
+        String[] testStrings = {"101",
+                                "1101",
+                                "111",
+                                "000",
+                                "11",
+                                "1111",
+                                "00100"};
 
-        if (isDivisibleBy2(binaryStr1)) {
-            System.out.println(binaryStr1 + " делится на 2.");
-        } else {
-            System.out.println(binaryStr1 + " не делится на 2.");
-        }
+        String regexA = "^(?!11$|111$)[01]*$";
+        String regexB = "^(1[01])*1?$";
+        String regexC = "^(?=.*0.*0)[01]*1?[01]*$";
+        String regexD = "^(?!.*11)[01]*$";
 
-        if (isDivisibleBy3(binaryStr2)) {
-            System.out.println(binaryStr2 + " делится на 3.");
-        } else {
-            System.out.println(binaryStr2 + " не делится на 3.");
-        }
+        System.out.println("a) Все строки кроме 11 и 111:");
+        testRegex(regexA, testStrings);
 
-        if (isDivisibleBy123(binaryStr2)) {
-            System.out.println(binaryStr2 + " делится на 123.");
-        } else {
-            System.out.println(binaryStr2 + " не делится на 123.");
-        }
+        System.out.println("b) Строки с единицами в каждой нечетной битовой позиции:");
+        testRegex(regexB, testStrings);
+
+        System.out.println("c) Строки с не менее двумя нулями и не более чем одной единицей:");
+        testRegex(regexC, testStrings);
+
+        System.out.println("d) Строки без двух единиц подряд:");
+        testRegex(regexD, testStrings);
     }
 
-    public static boolean isDivisibleBy2(String binary) {
-        return binary.length() > 0 && binary.charAt(binary.length() - 1) == '0';
-    }
-
-    public static boolean isDivisibleBy3(String binary) {
-        int remainder = 0;
-        for (char bit : binary.toCharArray()) {
-            remainder = (remainder * 2 + (bit - '0')) % 3;
+    public static void testRegex(String regex, String[] testStrings) {
+        Pattern pattern = Pattern.compile(regex);
+        for (String str : testStrings) {
+            Matcher matcher = pattern.matcher(str);
+            System.out.println(str + " : " + matcher.matches());
         }
-        return remainder == 0;
-    }
-
-    public static boolean isDivisibleBy123(String binary) {
-        int remainder = 0;
-        for (char bit : binary.toCharArray()) {
-            remainder = (remainder * 2 + (bit - '0')) % 123;
-        }
-        return remainder == 0;
     }
 }
+
