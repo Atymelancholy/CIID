@@ -7,17 +7,21 @@ public class Main {
                 "111",
                 "1001",
                 "10101",
-                "1010101"
+                "1010101",
+                "10a01",
+                "20011",
+                ""
         };
 
         for (String testCase : testCases) {
+            boolean matchesRegex = testCase.matches("^(?=[01]*0[01]*0)(?!.*00)[01]+$");
             boolean isValid = isValidBinaryString(testCase);
-            System.out.printf("String: %s -> %b%n", testCase, isValid);
+            System.out.printf("%s -> регулярное выражение: %b, функция: %b%n", testCase, matchesRegex, isValid);
         }
     }
 
     public static boolean isValidBinaryString(String input) {
-        if (input == null || input.isEmpty()) {
+        if (input == null || input.isEmpty() || !input.matches("[01]+")) {
             return false;
         }
 
@@ -44,4 +48,3 @@ public class Main {
         return count;
     }
 }
-
