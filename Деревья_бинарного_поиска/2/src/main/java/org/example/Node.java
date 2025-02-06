@@ -1,13 +1,14 @@
 package org.example;
 
-public class Node {
+class Node {
     int value;
-    int count;
     Node left;
     Node right;
+    int count;
 
-    public Node(int value, int count) {
+    public Node(int value) {
         this.value = value;
-        this.count = count;
+        this.left = this.right = null;
+        this.count = 1;
     }
 }

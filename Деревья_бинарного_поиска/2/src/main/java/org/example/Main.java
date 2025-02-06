@@ -1,36 +1,22 @@
 package org.example;
 
 public class Main {
-
-    public static boolean isBinaryTree(Node root){
-        if(root == null) {
-            return true;
-        }
-        else {
-            int count = countNodes(root);
-
-            return count == root.count && isBinaryTree(root.left) && isBinaryTree(root.right);
-        }
-    }
-
-    public static int countNodes(Node root){
-        if(root == null) {
-            return 0;
-        }
-        else{
-            return 1 + countNodes(root.left) + countNodes(root.right);
-        }
-    }
-
     public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = tree.insert(tree.root, 10);
+        tree.root = tree.insert(tree.root, 5);
+        tree.root = tree.insert(tree.root, 15);
+        tree.root = tree.insert(tree.root, 8);
+        tree.root = tree.insert(tree.root, 7);
 
-        Node root = new Node(10, 5);
-        root.left = new Node(5, 3);
-        root.right = new Node(15, 1);
-        root.left.left = new Node(3, 1);
-        root.left.right  = new Node(7, 1);
+        System.out.println("Пример N1");
+        tree.root.left.count = 3;
+        System.out.println(tree.isBinaryTree(tree.root));
 
-        System.out.println(isBinaryTree(root)? "Дерево корректно" : "Дерево некорректно");
+        System.out.println("Пример N2");
+        tree.root.left.count = 13;
+        System.out.println(tree.isBinaryTree(tree.root));
 
+        tree.printTree(tree.root, "", true);
     }
 }
