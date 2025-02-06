@@ -4,48 +4,62 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class BinaryTree {
-    private Node root;
+    Node root;
 
-    public void setRoot(int key) {
-        root = new Node(key);
+    public BinaryTree() {
+        root = null;
     }
 
-    public Node getRoot() {
+    public void insert(int key) {
+        root = insertRec(root, key);
+    }
+
+    private Node insertRec(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+
         return root;
     }
 
-    public void addLeft(Node parent, int key) {
-        if (parent != null) {
-            parent.setLeft(new Node(key));
-        }
-    }
+    public void printLevel(Node node) {
+        if (node == null) return;
 
-    public void addRight(Node parent, int key) {
-        if (parent != null) {
-            parent.setRight(new Node(key));
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.print(current.key + " ");
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
         }
     }
 
     public void printLevel() {
+        printLevel(root);
+    }
+    public void printTree() {
+        printTree(root, "", true);
+    }
+
+    private void printTree(Node root, String prefix, boolean isLeft) {
         if (root == null) {
-            System.out.println("Tree is empty");
             return;
         }
 
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-
-        while (!queue.isEmpty()) {
-            Node currentNode = queue.poll();
-            System.out.print(currentNode.getKey() + " ");
-
-            if (currentNode.getLeft() != null) {
-                queue.add(currentNode.getLeft());
-            }
-            if (currentNode.getRight() != null) {
-                queue.add(currentNode.getRight());
-            }
-        }
-        System.out.println();
+        printTree(root.right, prefix + (isLeft ? "│   " : "    "), false);
+        System.out.println(prefix + (isLeft ? "└── " : "┌── ") + root.key);
+        printTree(root.left, prefix + (isLeft ? "    " : "│   "), true);
     }
 }

@@ -4,18 +4,16 @@ public class Main {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
 
-        tree.setRoot(1);
-        Node root = tree.getRoot();
+        tree.insert(10);
+        tree.insert(6);
+        tree.insert(15);
+        tree.insert(9);
+        tree.insert(8);
+        tree.insert(20);
 
-        tree.addLeft(root, 2);
-        tree.addRight(root, 3);
-
-        tree.addLeft(root.getLeft(), 4);
-        tree.addRight(root.getLeft(), 5);
-
-        tree.addLeft(root.getRight(), 6);
-        tree.addRight(root.getRight(), 7);
-
+        System.out.println("Обход дерева по уровням:");
         tree.printLevel();
+        System.out.println("\nСхематическое изображение дерева:");
+        tree.printTree();
     }
 }
