@@ -8,7 +8,7 @@ public class Main {
         for (String key : keys) {
             tree.insert(key);
         }
-        
+
         tree.inOrder();
 
         System.out.println("\nСтруктура дерева:");
