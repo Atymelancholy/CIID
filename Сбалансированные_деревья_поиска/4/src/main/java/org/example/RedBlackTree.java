@@ -6,7 +6,9 @@ class RedBlackTree {
 
     private static class Node {
         int key;
-        Node left, right, parent;
+        Node left;
+        Node right;
+        Node parent;
         boolean color;
 
         Node(int key) {
@@ -50,41 +52,54 @@ class RedBlackTree {
     private void fixInsert(Node node) {
         while (node != root && node.parent.color == RED) {
             if (node.parent == node.parent.parent.left) {
-                Node uncle = node.parent.parent.right;
-                if (uncle != null && uncle.color == RED) {
-                    node.parent.color = BLACK;
-                    uncle.color = BLACK;
-                    node.parent.parent.color = RED;
-                    node = node.parent.parent;
-                } else {
-                    if (node == node.parent.right) {
-                        node = node.parent;
-                        rotateLeft(node);
-                    }
-                    node.parent.color = BLACK;
-                    node.parent.parent.color = RED;
-                    rotateRight(node.parent.parent);
-                }
+                node = handleLeftCase(node);
             } else {
-                Node uncle = node.parent.parent.left;
-                if (uncle != null && uncle.color == RED) {
-                    node.parent.color = BLACK;
-                    uncle.color = BLACK;
-                    node.parent.parent.color = RED;
-                    node = node.parent.parent;
-                } else {
-                    if (node == node.parent.left) {
-                        node = node.parent;
-                        rotateRight(node);
-                    }
-                    node.parent.color = BLACK;
-                    node.parent.parent.color = RED;
-                    rotateLeft(node.parent.parent);
-                }
+                node = handleRightCase(node);
             }
         }
         root.color = BLACK;
     }
+
+    private Node handleLeftCase(Node node) {
+        Node uncle = node.parent.parent.right;
+        if (uncle != null && uncle.color == RED) {
+            recolor(node.parent, uncle, node.parent.parent);
+            return node.parent.parent;
+        } else {
+            if (node == node.parent.right) {
+                node = node.parent;
+                rotateLeft(node);
+            }
+            node.parent.color = BLACK;
+            node.parent.parent.color = RED;
+            rotateRight(node.parent.parent);
+            return node;
+        }
+    }
+
+    private Node handleRightCase(Node node) {
+        Node uncle = node.parent.parent.left;
+        if (uncle != null && uncle.color == RED) {
+            recolor(node.parent, uncle, node.parent.parent);
+            return node.parent.parent;
+        } else {
+            if (node == node.parent.left) {
+                node = node.parent;
+                rotateRight(node);
+            }
+            node.parent.color = BLACK;
+            node.parent.parent.color = RED;
+            rotateLeft(node.parent.parent);
+            return node;
+        }
+    }
+
+    private void recolor(Node parent, Node uncle, Node grandparent) {
+        parent.color = BLACK;
+        uncle.color = BLACK;
+        grandparent.color = RED;
+    }
+
 
     private void rotateLeft(Node node) {
         Node rightChild = node.right;
