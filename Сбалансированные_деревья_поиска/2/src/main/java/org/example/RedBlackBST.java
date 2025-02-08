@@ -1,51 +1,51 @@
 package org.example;
 
-public class RedBlackBST<Key extends Comparable<Key>, Value> {
-    private class Node {
-        Key key;
-        Value value;
-        Node left, right;
+public class RedBlackBST<K extends Comparable<K>, V> {
 
-        public Node(Key key, Value value) {
+    private class Node {
+        K key;
+        V value;
+        Node left;
+        Node right;
+
+        public Node(K key, V value) {
             this.key = key;
             this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return "Key: " + key + ", Value: " + value;
         }
     }
 
     private Node root;
 
-    private boolean isRed(Node x) {
-        if (x == null || x.left == null || x.right == null) return false;
-        return x.left.key.compareTo(x.right.key) > 0;
-    }
+    private void swapIfNeeded(Node h) {
+        if (h != null && h.left != null && h.key.compareTo(h.left.key) < 0) {
+            K tempKey = h.key;
+            h.key = h.left.key;
+            h.left.key = tempKey;
 
-    private void makeRed(Node x) {
-        if (x == null || x.left == null || x.right == null) return;
-        Node temp = x.left;
-        x.left = x.right;
-        x.right = temp;
-    }
-
-    private void makeBlack(Node x) {
-        if (x == null || x.left == null || x.right == null) return;
-        if (x.left.key.compareTo(x.right.key) > 0) {
-            Node temp = x.left;
-            x.left = x.right;
-            x.right = temp;
+            V tempValue = h.value;
+            h.value = h.left.value;
+            h.left.value = tempValue;
         }
+    }
+
+    private Node balance(Node h) {
+        swapIfNeeded(h);
+
+        if (h.left != null && h.key.compareTo(h.left.key) < 0) {
+            h = rotateRight(h);
+        }
+
+        if (h.right != null && h.key.compareTo(h.right.key) > 0) {
+            h = rotateLeft(h);
+        }
+
+        return h;
     }
 
     private Node rotateLeft(Node h) {
         Node x = h.right;
         h.right = x.left;
         x.left = h;
-        makeRed(x);
-        makeBlack(h);
         return x;
     }
 
@@ -53,61 +53,39 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         Node x = h.left;
         h.left = x.right;
         x.right = h;
-        makeRed(x);
-        makeBlack(h);
         return x;
     }
 
-    private Node balance(Node h) {
-        if (isRed(h.right)) h = rotateLeft(h);
-        if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
-        if (isRed(h.left) && isRed(h.right)) {
-            makeRed(h);
-            makeBlack(h.left);
-            makeBlack(h.right);
-        }
-        return h;
-    }
-
-    public void put(Key key, Value value) {
+    public void put(K key, V value) {
         root = put(root, key, value);
-        makeBlack(root);
     }
 
-    private Node put(Node h, Key key, Value value) {
+    private Node put(Node h, K key, V value) {
         if (h == null) return new Node(key, value);
 
         int cmp = key.compareTo(h.key);
-        if (cmp < 0) h.left = put(h.left, key, value);
-        else if (cmp > 0) h.right = put(h.right, key, value);
-        else h.value = value;
+        if (cmp < 0) {
+            h.left = put(h.left, key, value);
+        } else if (cmp > 0) {
+            h.right = put(h.right, key, value);
+        } else {
+            h.value = value;
+        }
 
         return balance(h);
-    }
-
-    public boolean isRedBlackTree() {
-        return isRedBlackTree(root);
-    }
-
-    private boolean isRedBlackTree(Node x) {
-        if (x == null) return true;
-        if (isRed(x) && (isRed(x.left) || isRed(x.right))) return false;
-        return isRedBlackTree(x.left) && isRedBlackTree(x.right);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        buildString(root, sb, "", true);
+        buildString(root, sb, "", false);
         return sb.toString();
     }
 
-    private void buildString(Node node, StringBuilder sb, String prefix, boolean isTail) {
-        if (node != null) {
-            sb.append(prefix).append(isTail ? "└── " : "├── ").append(node.key).append("\n");
-            buildString(node.left, sb, prefix + (isTail ? "    " : "│   "), false);
-            buildString(node.right, sb, prefix + (isTail ? "    " : "│   "), true);
-        }
+    private void buildString(Node node, StringBuilder sb, String prefix, boolean isLeft) {
+        if (node == null) return;
+        buildString(node.right, sb, prefix + (isLeft ? "│   " : "    "), false);
+        sb.append(prefix).append(isLeft ? "└── " : "┌── ").append(node.key).append("\n");
+        buildString(node.left, sb, prefix + (isLeft ? "    " : "│   "), true);
     }
 }
-
