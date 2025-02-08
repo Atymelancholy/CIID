@@ -1,53 +1,29 @@
 package org.example;
-import java.util.logging.Logger;
-import java.util.logging.Level;
+
+import static org.example.Result.calculatePaths;
 
 public class Main {
-    static Logger logger = Logger.getLogger(Main.class.getName());
-
-    static class Result {
-        int internalPath = 0;
-        int externalPath = 0;
-    }
-
-    public static Result calculatePaths(TreeNode node, int depth) {
-        Result result = new Result();
-
-        if (node == null) {
-            result.externalPath = depth;
-            return result;
-        }
-
-        Result left = calculatePaths(node.left, depth + 1);
-        Result right = calculatePaths(node.right, depth + 1);
-
-        result.internalPath = left.internalPath + right.internalPath + depth;
-        result.externalPath = left.externalPath + right.externalPath;
-
-        return result;
-    }
-
     public static void main(String[] args) {
-        TreeNode tree = new TreeNode(
-                new TreeNode(
-                        new TreeNode(null, null),
-                        null
-                ),
-                new TreeNode(
-                        null,
-                        new TreeNode(null, null)
-                )
-        );
+        TreeNode tree = new TreeNode(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(3);
+        tree.insert(7);
+        tree.insert(19);
+        tree.insert(11);
+        tree.insert(18);
 
-        Result result = calculatePaths(tree, 0);
-
+        Result result = calculatePaths(tree);
         int i = result.internalPath;
         int e = result.externalPath;
-        int n = 5;
+        int n = result.totalNodes;
 
-        logger.log(Level.INFO,"Internal Path Length (I): {0}", new Object[]{i});
-        logger.log(Level.INFO,"External Path Length (E): {}", new Object[]{e});
-        logger.log(Level.INFO,"E - I: {}", new Object[]{(e - i)});
-        logger.log(Level.INFO,"Expected Difference: 2N = {}", new Object[]{(2 * n)});
+        System.out.println("Длина внутреннего пути (I): " + i);
+        System.out.println("Длина внешнего пути (E): " + e);
+        System.out.println("E - I: " + (e - i));
+        System.out.println("Ожидаемая разница: 2N = " + (2 * n));
+
+        System.out.println("\nВывод бинарного дерева:");
+        tree.printTree();
     }
 }
