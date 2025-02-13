@@ -18,5 +18,5 @@ public class Main {
 
         System.out.println("После сортировки: ");
         System.out.println(list);
-    }
+    } 
 }
