@@ -44,12 +44,12 @@
         <module>Регулярные_выражения/1</module>
         <module>Регулярные_выражения/2</module>
         <module>Регулярные_выражения/3</module>
-        <module>Регулярные_выражения/4</module>-->
-        <!-- Добавьте другие модули, если нужно -->
+        <module>Регулярные_выражения/4</module>
     </modules>
     <properties>
-    <maven.compiler.source>17</maven.compiler.source>      <maven.compiler.target>17</maven.compiler.target>
-    <sonar.organization>atymelancholy</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <sonar.organization>atymelancholy</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 </project>
