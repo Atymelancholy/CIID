@@ -15,7 +15,7 @@ public class Main {
 
         String regexA = "^(?!11$|111$)[01]*$";
         String regexB = "^(1[01])*1?$";
-        String regexC = "^(?=.*0.*0)[01]*1?[01]*$";
+        String regexC = "^(?=0*1?0*$)(?=.*0.*0)[01]+$";
         String regexD = "^(?!.*11)[01]*$";
 
         System.out.println("a) Все строки кроме 11 и 111:");
