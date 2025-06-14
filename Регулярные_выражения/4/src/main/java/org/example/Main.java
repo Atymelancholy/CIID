@@ -22,7 +22,7 @@ public class Main {
     }
 
     public static boolean isValidBinaryString(String str) {
-        String regex = "^(\\([*01]*?\\))*$";
+        String regex = "^(\\([*01]*\\))*$";
         return Pattern.matches(regex, str);
     }
 }
