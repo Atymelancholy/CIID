@@ -16,30 +16,10 @@ public class RedBlackBST<K extends Comparable<K>, V> {
 
     private Node root;
 
-    private void swapIfNeeded(Node h) {
-        if (h != null && h.left != null && h.key.compareTo(h.left.key) < 0) {
-            K tempKey = h.key;
-            h.key = h.left.key;
-            h.left.key = tempKey;
-
-            V tempValue = h.value;
-            h.value = h.left.value;
-            h.left.value = tempValue;
-        }
-    }
-
-    private Node balance(Node h) {
-        swapIfNeeded(h);
-
-        if (h.left != null && h.key.compareTo(h.left.key) < 0) {
-            h = rotateRight(h);
-        }
-
-        if (h.right != null && h.key.compareTo(h.right.key) > 0) {
-            h = rotateLeft(h);
-        }
-
-        return h;
+    private boolean isRed(Node h) {
+        if (h == null) return false;
+        if (h.left == null || h.right == null) return false;
+        return h.left.key.compareTo(h.right.key) > 0;
     }
 
     private Node rotateLeft(Node h) {
@@ -56,8 +36,68 @@ public class RedBlackBST<K extends Comparable<K>, V> {
         return x;
     }
 
+    private Node flipColors(Node h) {
+        if (h.left != null && h.right != null) {
+            Node temp = h.left;
+            h.left = h.right;
+            h.right = temp;
+        }
+        return h;
+    }
+
+    private int height(Node h) {
+        if (h == null) return 0;
+        return 1 + Math.max(height(h.left), height(h.right));
+    }
+
+    private boolean isBalanced(Node h) {
+        if (h == null) return true;
+        int leftHeight = height(h.left);
+        int rightHeight = height(h.right);
+        return Math.abs(leftHeight - rightHeight) <= 1
+                && isBalanced(h.left)
+                && isBalanced(h.right);
+    }
+
+    private Node balance(Node h) {
+        if (h == null) return null;
+
+        if (isRed(h.right) && !isRed(h.left)) {
+            h = rotateLeft(h);
+        }
+        if (isRed(h.left) && isRed(h.left.left)) {
+            h = rotateRight(h);
+        }
+        if (isRed(h.left) && isRed(h.right)) {
+            h = flipColors(h);
+        }
+
+        if (!isBalanced(h)) {
+            int leftHeight = height(h.left);
+            int rightHeight = height(h.right);
+
+            if (leftHeight > rightHeight + 1) {
+                h = rotateRight(h);
+            } else if (rightHeight > leftHeight + 1) {
+                h = rotateLeft(h);
+            }
+
+            if (!isBalanced(h)) {
+                if (isBalanced(h.left)) {
+                    h = rotateRight(h);
+                } else if (isBalanced(h.right)) {
+                    h = rotateLeft(h);
+                }
+            }
+        }
+        return h;
+    }
+
     public void put(K key, V value) {
         root = put(root, key, value);
+        if (isRed(root)) {
+            root = flipColors(root);
+        }
     }
 
     private Node put(Node h, K key, V value) {
